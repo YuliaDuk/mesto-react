@@ -2,21 +2,22 @@ import api from "../utils/Api"
 import Card from "./Card"
 import { useState, useEffect } from "react"
 function Main (props){
-    const [userName, setUserName] = useState()
-    const [userDescription, setUserDescription] = useState()
-    const [userAvatar, setUserAvatar] = useState()
-    api.getProfileInfo()
-    .then((res)=>{
-        setUserName(res.name)
-        setUserDescription(res.about)
-        setUserAvatar(res.avatar)
-    })
-    .catch((err)=>console.log(err))
+    const [userName, setUserName] = useState('')
+    const [userDescription, setUserDescription] = useState('')
+    const [userAvatar, setUserAvatar] = useState('')
     const [cards, setCards] = useState([])
     useEffect(()=>{
         api.getCards()
         .then((res)=>{
             setCards(res)
+        })
+        .catch((err)=>console.log(err))
+        api.getProfileInfo()
+        .then((res)=>{
+            console.log(res)
+            setUserName(res.name)
+            setUserDescription(res.about)
+            setUserAvatar(res.avatar)
         })
         .catch((err)=>console.log(err))
     },[])
