@@ -66,7 +66,7 @@ class Api {
         })
         .then(this._getResponseData)
     }
-    toggleApiLikes(isLiked, cardId){
+    toggleApiLikes(cardId, isLiked){
         return isLiked ? this._removeLikes(cardId) : this._addLikes(cardId)
     }
     _getResponseData(res) {
