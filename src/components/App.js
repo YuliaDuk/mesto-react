@@ -12,7 +12,7 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function App() {
     const [cards, setCards] = useState([])
-    const [currentUser, setCurrentUser] = useState('');
+    const [currentUser, setCurrentUser] = useState({});
     useEffect(()=>{
         api.getProfileInfo()
         .then((res)=>{

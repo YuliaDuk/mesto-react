@@ -17,7 +17,7 @@ function Card(props){
         props.onCardDelete(props.card)
     }
     return(
-        <>
+        <article  className="element">
             <img onClick={handleClick} src={props.card.link} alt={props.card.name} className="element__pic"/>
             {isOwn && <button type="button" className="element__trash" aria-label="Удалить" onClick={handleDeleteClick} />}
             <div className="element__text">
@@ -27,7 +27,7 @@ function Card(props){
                     <p className="element__qty-like">{props.card.likes.length}</p>
                 </div>
             </div>
-        </>
+        </article>
     )
 }
 export default Card
