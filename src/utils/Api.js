@@ -15,24 +15,26 @@ class Api {
         })
         .then(this._getResponseData)
     }
-    redProfile({firstname, job}){
+    redProfile(data){
        return fetch(`${this._baseUrl}/users/me`,{
         method: 'PATCH',
         headers: this._headers,
         body: JSON.stringify({
-            name: firstname,
-            about: job
+            name: data.name,
+            about: data.about
         })
        })
+       .then(this._getResponseData)
     }
-    redImgProfile({newimg}){
+    redImgProfile(data){
         return fetch(`${this._baseUrl}/users/me/avatar`,{
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
-                avatar: newimg,
-            })
-           })
+                avatar: data.avatar,
+        })
+        })
+        .then(this._getResponseData)
     }
     addNewCard({name, link}){
          return fetch(`${this._baseUrl}/cards`, {
@@ -43,7 +45,8 @@ class Api {
                 link: link,
             })
         })
-        .then((res)=>res.json())
+        .then(this._getResponseData)
+        
     }
     _addLikes(cardId){
         return fetch(`${this._baseUrl}/cards/${cardId}/likes`,{

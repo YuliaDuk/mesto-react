@@ -1,18 +1,7 @@
 import Card from "./Card"
-import api from "../utils/Api";
-import { useState, useEffect, useContext } from "react";
+import {  useContext } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 function Main (props){
-
-    // const [cards, setCards] = useState([])
-    // useEffect(()=>{
-    //     api.getCards()
-    //     .then((res)=>{
-    //         setCards(res)
-    //     })
-    //     .catch((err)=>console.log(err))
-    // },[])
-   
     const currentUser = useContext(CurrentUserContext)
     return (
         <main className="content"> 
@@ -28,7 +17,7 @@ function Main (props){
             <section className="elements"> 
                 {props.cards.map((card)=> 
                 <article key={card._id} className="element">
-                    <Card onCardLike={props.handleCardLike} onCardClick={props.handleCardClick} onCardDelete={props.handleCardDelete} card={card} />
+                    <Card onCardLike={props.onCardLike} onCardClick={props.handleCardClick} onCardDelete={props.onCardDelete} card={card} />
                 </article>
                 )}               
             </section>
